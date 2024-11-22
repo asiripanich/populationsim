@@ -16,6 +16,7 @@ jobs:
         name: ${{ matrix.config.os }} (${{ matrix.config.python-version }})
 
         strategy:
+            fail-fast: false
             matrix:
                 python-version: ['3.8', '3.9']
                 config:
