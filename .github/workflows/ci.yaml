@@ -36,7 +36,7 @@ jobs:
                 # cache: 'pip' # caching pip dependencies   
 
             - name: Install HDF5 on MacOS
-              if: ${{ matrix.config.os }} != 'macos-latest'
+              if: ${{ matrix.config.os }} == 'macos-latest'
               run: brew install hdf5
 
             - name: Install PopulationSim with pip
