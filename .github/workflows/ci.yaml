@@ -33,8 +33,16 @@ jobs:
               uses: actions/setup-python@v5
               with:
                 python-version: ${{ matrix.python-version }}
-                # cache: 'pip' # caching pip dependencies    
+                # cache: 'pip' # caching pip dependencies   
+
+            - name: Install HDF5 on MacOS
+              if: ${{ matrix.config.os }} != 'macos-latest'
+              run: brew install hdf5
 
             - name: Install PopulationSim with pip
               run: pip install .
+
+
+            - name: Run exmaple_calm
+              run: cd exmaple_calm && python run_simulation.py -c configs
         
