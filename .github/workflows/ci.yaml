@@ -26,7 +26,10 @@ jobs:
                 config:
                     - {os: macos-latest}
                     - {os: windows-latest}
-                    - {os: ubuntu-latest}          
+                    - {os: ubuntu-latest}   
+        defaults:
+            run:
+                shell: bash -l {0}       
 
         steps:
             - uses: actions/checkout@v4
@@ -34,7 +37,6 @@ jobs:
             - name: Setup Mambaforge
               uses: conda-incubator/setup-miniconda@v3
               with:
-                  miniforge-variant: Mambaforge
                   miniforge-version: latest
                   activate-environment: popsim
                   use-mamba: true
@@ -44,11 +46,10 @@ jobs:
               run: |
                 mamba info -a
                 mamba list
-                mamba init      
-
+              
             - name: Install PyTables using Conda
               run: |
-                mamba activate popsim && mamba install pytables
+                mamba install pytables
 
             - name: Install PopulationSim with pip
               run: |
