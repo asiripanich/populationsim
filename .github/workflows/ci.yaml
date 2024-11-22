@@ -39,15 +39,18 @@ jobs:
 
             - name: Install PyTables using Conda
               run: |
+                conda activate test
                 conda install pytables
 
             - name: Install PopulationSim with pip
-              run: pip install .
+              run: |
+                conda activate test
+                pip install .
 
 
             - name: Run example_calm
-              run: cd example_calm && python run_populationsim.py -c configs
+              run: conda activate test && cd example_calm && python run_populationsim.py -c configs
 
             - name: Run example_calm in multiprocessing mode
-              run: cd example_calm && python run_populationsim.py -c configs_mp -c configs
+              run: conda activate test && cd example_calm && python run_populationsim.py -c configs_mp -c configs
         
