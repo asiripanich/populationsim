@@ -13,7 +13,7 @@ jobs:
     build:
         runs-on: ${{ matrix.config.os }}
 
-        name: ${{ matrix.config.os }} (${{ matrix.python-version }})
+        name: ${{ matrix.config.os }} (python v${{ matrix.python-version }})
 
         strategy:
             fail-fast: false
@@ -42,5 +42,5 @@ jobs:
 
 
             - name: Run example_calm
-              run: cd example_calm && python run_simulation.py -c configs
+              run: cd example_calm && python run_populationsim.py -c configs
         
