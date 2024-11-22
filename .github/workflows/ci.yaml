@@ -37,21 +37,17 @@ jobs:
                 python-version: ${{ matrix.python-version }}
                 # cache: 'pip' # caching pip dependencies   
 
-            - name: Install HDF5 on MacOS
-              if: ${{ matrix.config.os == 'macos-latest' }}
-              run: |
-                brew install hdf5
-                brew install c-blosc
+            - name: Set up Conda environment with Python version ${{ matrix.python-version }}
+              uses: conda-incubator/setup-miniconda@v3
+              with:
+                python-version: ${{ matrix.python-version }}
+                channels: conda-forge
 
-            - name: MacOS - Install PopulationSim with pip
-              if: ${{ matrix.config.os == 'macos-latest' }}
+            - name: Install PyTables using Conda
               run: |
-                export HDF5_DIR="$(brew --prefix hdf5)"
-                export BLOSC_DIR="$(brew --prefix c-blosc)"
-                pip install .
+                conda install pytables
 
-            - name: Not MacOS - Install PopulationSim with pip
-              if: ${{ matrix.config.os != 'macos-latest' }}
+            - name: Install PopulationSim with pip
               run: pip install .
 
 
