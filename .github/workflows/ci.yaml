@@ -40,6 +40,10 @@ jobs:
                   use-mamba: true
                   python-version: ${{ matrix.python-version }}
 
+            - name: Mamba env list
+              run: |
+                mamba env list      
+
             - name: Install PyTables using Conda
               run: |
                 mamba install pytables
