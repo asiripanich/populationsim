@@ -8,7 +8,7 @@ on:
     pull_request:
         branches:
             - '*'
-            
+
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true # If another job in the above group wants to run, it will cancel the current job
@@ -39,7 +39,10 @@ jobs:
 
             - name: Install HDF5 on MacOS
               if: ${{ matrix.config.os == 'macos-latest' }}
-              run: brew install hdf5
+              run: |
+                brew unlink pkg-config
+                brew link --overwrite pkgconf
+                brew install hdf5
 
             - name: Install PopulationSim with pip
               run: pip install .
