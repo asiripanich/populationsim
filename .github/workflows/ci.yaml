@@ -41,6 +41,6 @@ jobs:
               run: pip install .
 
 
-            - name: Run exmaple_calm
-              run: cd exmaple_calm && python run_simulation.py -c configs
+            - name: Run example_calm
+              run: cd example_calm && python run_simulation.py -c configs
         
