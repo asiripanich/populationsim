@@ -40,13 +40,15 @@ jobs:
                   use-mamba: true
                   python-version: ${{ matrix.python-version }}
 
-            - name: Mamba env list
+            - name: Conda checkup
               run: |
-                mamba env list      
+                mamba info -a
+                mamba list
+                mamba init      
 
             - name: Install PyTables using Conda
               run: |
-                mamba install pytables
+                mamba activate popsim && mamba install pytables
 
             - name: Install PopulationSim with pip
               run: |
