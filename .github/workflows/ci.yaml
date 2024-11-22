@@ -41,11 +41,13 @@ jobs:
               if: ${{ matrix.config.os == 'macos-latest' }}
               run: |
                 brew install hdf5
+                brew install c-blosc
 
             - name: MacOS - Install PopulationSim with pip
               if: ${{ matrix.config.os == 'macos-latest' }}
               run: |
                 export HDF5_DIR="$(brew --prefix hdf5)"
+                export BLOSC_DIR="$(brew --prefix c-blosc)"
                 pip install .
 
             - name: Not MacOS - Install PopulationSim with pip
