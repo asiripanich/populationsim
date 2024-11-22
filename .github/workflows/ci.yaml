@@ -8,6 +8,10 @@ on:
     pull_request:
         branches:
             - '*'
+            
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true # If another job in the above group wants to run, it will cancel the current job
 
 jobs:
     build:
