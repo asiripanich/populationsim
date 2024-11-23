@@ -74,7 +74,12 @@ jobs:
 
             - name: Run example_calm in multiprocessing mode
               run: cd example_calm && python run_populationsim.py -c configs_mp -c configs
+
+            - name: Run example_calm_repop
+              run: |
+                cp ./example_calm/output/pipeline.h5 example_calm_repop/output
+                cd example_calm_repop && python run_populationsim.py 
             
-            - name: Run example_survey_weighting in multiprocessing mode
+            - name: Run example_survey_weighting
               run: cd example_survey_weighting && python run_populationsim.py
         
