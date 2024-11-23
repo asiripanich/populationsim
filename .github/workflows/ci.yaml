@@ -74,4 +74,7 @@ jobs:
 
             - name: Run example_calm in multiprocessing mode
               run: cd example_calm && python run_populationsim.py -c configs_mp -c configs
+            
+            - name: Run example_survey_weighting in multiprocessing mode
+              run: cd example_survey_weighting && python run_populationsim.py -c configs_mp -c configs
         
