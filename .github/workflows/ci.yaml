@@ -14,7 +14,7 @@ concurrency:
     cancel-in-progress: true # If another job in the above group wants to run, it will cancel the current job
 
 jobs:
-    build:
+    ci:
         runs-on: ${{ matrix.config.os }}
 
         name: ${{ matrix.config.os }} (python v${{ matrix.python-version }})
@@ -68,6 +68,11 @@ jobs:
               run: |
                 mamba info -a
                 mamba list
+
+            - name: pytest
+              run: |
+                pip install pytest
+                py.test --cov populationsim --cov-report term-missing
 
             - name: Run example_calm
               run: cd example_calm && python run_populationsim.py -c configs
