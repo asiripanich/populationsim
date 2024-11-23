@@ -49,7 +49,7 @@ jobs:
               
             - name: Install PyTables using Conda
               run: |
-                mamba install pytables
+                mamba install pytables=3.8.0
 
             - name: Install PopulationSim with pip
               run: |
