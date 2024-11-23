@@ -71,7 +71,7 @@ jobs:
 
             - name: pytest
               run: |
-                pip install pytest
+                pip install pytest coverage
                 pytest
 
             - name: Run example_calm
