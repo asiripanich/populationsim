@@ -47,7 +47,7 @@ jobs:
             - name: Install PyTables using Conda
               if: ${{ startsWith(matrix.config.os, 'macos') }}
               run: |
-                mamba install numpy=1.19.5 pytables=3.8.0
+                mamba install numpy=1.19.5 pytables=3.7.0
 
             - name: Install PopulationSim with pip
               run: |
