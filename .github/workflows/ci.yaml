@@ -43,8 +43,13 @@ jobs:
                   activate-environment: popsim
                   use-mamba: true
                   python-version: ${{ matrix.python-version }}
+
+            - name: MacOS arm64 - Install llvm-openmp using Conda
+              if: ${{ matrix.config.os == 'macos-latest' }}
+              run: |
+                mamba install llvm-openmp
               
-            - name: Install PyTables using Conda
+            - name: MacOS - Install PyTables using Conda
               if: ${{ startsWith(matrix.config.os, 'macos') }}
               run: |
                 mamba install numpy=1.19.5 pytables=3.7.0
