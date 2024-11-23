@@ -48,6 +48,7 @@ jobs:
                 mamba list
               
             - name: Install PyTables using Conda
+              if: ${{ matrix.config.os == 'macos-latest' }}
               run: |
                 mamba install pytables=3.8.0
 
