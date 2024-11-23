@@ -72,7 +72,7 @@ jobs:
             - name: pytest
               run: |
                 pip install pytest
-                py.test --cov populationsim --cov-report term-missing
+                pytest
 
             - name: Run example_calm
               run: cd example_calm && python run_populationsim.py -c configs
